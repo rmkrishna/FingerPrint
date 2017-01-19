@@ -45,17 +45,17 @@ public class MainActivity extends AppCompatActivity implements FPStatusListener 
         Log.d(TAG, "onResume() called");
 
         if(mLFingerPrint.getManager().isFingerPrintAvailable()) {
-            Log.d(TAG, "onResume() called : finger print available ");
+            Log.d(TAG, "Finger print available ");
 
             if(mLFingerPrint.getManager().hasFingerprintRegistered()) {
-                Log.d(TAG, "onResume() called : finger print registered");
+                Log.d(TAG, "Finger print registered");
 
                 mLFingerPrint.getManager().startListening();
             } else {
-                Log.d(TAG, "onResume() called : finger print not registered ");
+                Log.d(TAG, "Finger print not registered ");
             }
         } else {
-            Log.d(TAG, "onResume() called : finger print not available ");
+            Log.d(TAG, "Finger print not available ");
         }
     }
 

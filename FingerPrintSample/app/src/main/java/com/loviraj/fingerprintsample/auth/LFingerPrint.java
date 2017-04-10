@@ -15,17 +15,17 @@ public class LFingerPrint {
 
     public LFingerPrint(Context context, FPStatusListener listener) {
 
-        final boolean isSameungDevice = isSamsungDevice(Build.MANUFACTURER, Build.BRAND);
+        final boolean isSamsungDevice = isSamsungDevice(Build.MANUFACTURER, Build.BRAND);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Log.d(TAG, "LFingerPrint: " + Build.VERSION_CODES.M);
             mLFingerPrintManager = new MarshmallowFP(context, listener);
 
-            if (!mLFingerPrintManager.isFingerPrintAvailable() && isSameungDevice) {
+            if (!mLFingerPrintManager.isFingerPrintAvailable() && isSamsungDevice) {
                 Log.d(TAG, "LFingerPrint: samsung");
                 mLFingerPrintManager = new SamsungPassFP(context, listener);
             }
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && isSameungDevice) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && isSamsungDevice) {
             Log.d(TAG, "LFingerPrint: samsung");
             mLFingerPrintManager = new SamsungPassFP(context, listener);
         } else {

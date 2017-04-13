@@ -17,12 +17,8 @@ public class MarshmallowFP extends FingerprintManagerCompat.AuthenticationCallba
 
     private boolean mSelfCancelled;
 
-    private Context mContext;
-
     public MarshmallowFP(Context context, FPStatusListener fpStatusListener) {
-        mContext = context;
-
-        mFingerprintManagerCompat = FingerprintManagerCompat.from(mContext);
+        mFingerprintManagerCompat = FingerprintManagerCompat.from(context);
 
         mFpStatusListener = fpStatusListener;
     }
@@ -68,6 +64,8 @@ public class MarshmallowFP extends FingerprintManagerCompat.AuthenticationCallba
     public void onAuthenticationError(int errMsgId, CharSequence errString) {
         if (!mSelfCancelled) {
             mFpStatusListener.fpAuthFailed();
+
+            mFpStatusListener.fpAuthError(errString.toString());
         }
     }
 

@@ -24,7 +24,7 @@ public class LegacyFP implements LFPManager {
 
     @Override
     public void startListening() {
-        mFpStatusListener.fpAuthFailed();
+        mFpStatusListener.fpAuthFailed(null);
     }
 
     @Override

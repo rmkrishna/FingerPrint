@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.loviraj.fingerprintsample.auth.FPStatusListener;
 import com.loviraj.fingerprintsample.auth.LFingerPrint;
@@ -95,15 +94,9 @@ public class MainActivity extends AppCompatActivity implements FPStatusListener 
     }
 
     @Override
-    public void fpAuthFailed() {
+    public void fpAuthFailed(String errorMessage) {
 
         Log.d(TAG, "fpAuthFailed() called");
     }
 
-    @Override
-    public void fpAuthError(String error) {
-        Log.d(TAG, "fpAuthError: " + error);
-
-        Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
-    }
 }

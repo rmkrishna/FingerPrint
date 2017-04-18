@@ -41,7 +41,7 @@ public class MarshmallowFP extends FingerprintManagerCompat.AuthenticationCallba
     @Override
     public void startListening() {
         if (!(isFingerPrintAvailable() && hasFingerprintRegistered())) {
-            mFpStatusListener.fpAuthFailed();
+            mFpStatusListener.fpAuthFailed(null);
             return;
         }
 
@@ -63,20 +63,18 @@ public class MarshmallowFP extends FingerprintManagerCompat.AuthenticationCallba
     @Override
     public void onAuthenticationError(int errMsgId, CharSequence errString) {
         if (!mSelfCancelled) {
-            mFpStatusListener.fpAuthFailed();
-
-            mFpStatusListener.fpAuthError(errString.toString());
+            mFpStatusListener.fpAuthFailed(errString.toString());
         }
     }
 
     @Override
     public void onAuthenticationFailed() {
-        mFpStatusListener.fpAuthFailed();
+        mFpStatusListener.fpAuthFailed(null);
     }
 
     @Override
     public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
-        mFpStatusListener.fpAuthFailed();
+        mFpStatusListener.fpAuthFailed(helpString.toString());
     }
 
     @Override

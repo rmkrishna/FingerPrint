@@ -37,9 +37,9 @@ public class LFingerPrint {
         return mLFingerPrintManager;
     }
 
-    private static boolean isSamsungDevice(String strManufacturer, String strBrand) {
-        return (strBrand != null && strManufacturer != null) ?
-                strBrand.compareToIgnoreCase("Samsung") == 0
-                        || strManufacturer.compareToIgnoreCase("Samsung") == 0 : false;
+    private boolean isSamsungDevice(String strManufacturer, String strBrand) {
+        return (strBrand != null && strManufacturer != null)
+                && (strBrand.compareToIgnoreCase("Samsung") == 0
+                || strManufacturer.compareToIgnoreCase("Samsung") == 0);
     }
 }

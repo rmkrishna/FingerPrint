@@ -94,8 +94,9 @@ public class MainActivity extends AppCompatActivity implements FPStatusListener 
     }
 
     @Override
-    public void fpAuthFailed() {
+    public void fpAuthFailed(String errorMessage) {
 
         Log.d(TAG, "fpAuthFailed() called");
     }
+
 }

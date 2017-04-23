@@ -63,11 +63,11 @@ public class SamsungPassFP implements LFPManager {
         }
         try {
             if (!spassFingerprint.hasRegisteredFinger()) {
-                mFpStatusListener.fpAuthFailed();
+                mFpStatusListener.fpAuthFailed(null);
                 return;
             }
         } catch (Throwable ignored) {
-            mFpStatusListener.fpAuthFailed();
+            mFpStatusListener.fpAuthFailed(null);
             return;
         }
 
@@ -76,7 +76,7 @@ public class SamsungPassFP implements LFPManager {
         try {
             spassFingerprint.startIdentify(mIdentifyListener);
         } catch (Throwable t) {
-            mFpStatusListener.fpAuthFailed();
+            mFpStatusListener.fpAuthFailed(null);
         }
 
 
@@ -106,7 +106,7 @@ public class SamsungPassFP implements LFPManager {
                 case SpassFingerprint.STATUS_TIMEOUT_FAILED:
                 case SpassFingerprint.STATUS_QUALITY_FAILED:
                 default:
-                    mFpStatusListener.fpAuthFailed();
+                    mFpStatusListener.fpAuthFailed(null);
             }
         }
 
